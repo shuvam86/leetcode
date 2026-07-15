@@ -6,15 +6,17 @@ class Solution {
         return result;
     }
 
-    public void fun(int[] nums, int index, List<Integer> current) {
-        result.add(new ArrayList<>(current));
-
-        for (int i = index; i < nums.length; i++) {
-            current.add(nums[i]);
-            fun(nums, i + 1, current);
-
-            current.remove(current.size() - 1);
+    public void fun(int[] nums, int index, List<Integer> cur) {
+        if(index == nums.length) {
+            result.add(new ArrayList<>(cur));
+            return;
         }
+
+        cur.add(nums[index]);
+        fun(nums,index+1,cur);
+        cur.remove(cur.size() - 1);
+        fun(nums,index+1,cur);
+
 
     }
 
